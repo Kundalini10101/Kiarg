@@ -9,8 +9,15 @@ html, body {
 body {
   background: black;
   font-family: 'VT323', monospace;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+.dark-mode {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Monitor and On/Off Button */
 .monitor {
   margin: 3vmin auto;
   padding: 5.5vmin;
@@ -20,6 +27,12 @@ body {
   align-items: center;
   background: #3f3933;
   border-radius: 0.5rem;
+}
+
+.monitor.powered-off .crt {
+  background: #000;
+  opacity: 0.2;
+  transition: opacity 0.3s;
 }
 
 .screen {
