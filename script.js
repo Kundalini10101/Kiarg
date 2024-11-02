@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (darkMode) document.body.classList.add('dark-mode');
 });
 
-// Image upload and gallery display
+// Image upload and gallery display (Client-side display of selected image)
 const uploadForm = document.getElementById('uploadForm');
 const imageInput = document.getElementById('imageInput');
 const captionInput = document.getElementById('captionInput');
@@ -38,7 +38,6 @@ uploadForm.addEventListener('submit', (e) => {
             const imgElement = document.createElement('img');
             imgElement.src = data.imageUrl;
             imgElement.alt = caption;
-            imgElement.addEventListener('click', () => openModal(data.imageUrl));
 
             const galleryItem = document.createElement('div');
             galleryItem.classList.add('gallery-item');
