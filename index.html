@@ -19,7 +19,7 @@
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* Dark mode toggle */
+        /* Dark mode */
         .dark-mode {
             background-color: #fff;
             color: #000;
@@ -46,7 +46,7 @@
             text-shadow: 0 0 10px #00ff00;
         }
 
-        /* Imageboard styles */
+        /* Imageboard */
         .imageboard {
             width: 80%;
             max-width: 1200px;
@@ -68,13 +68,23 @@
             justify-content: center;
         }
 
-        .gallery img {
-            max-width: 200px;
+        .gallery-item {
+            position: relative;
             margin: 10px;
+        }
+
+        .gallery-item img {
+            max-width: 200px;
             border: 2px solid #00ff00;
             box-shadow: 0 0 10px #00ff00;
             cursor: pointer;
             transition: transform 0.3s ease;
+        }
+
+        .gallery-item .caption {
+            text-align: center;
+            color: #00ff00;
+            margin-top: 5px;
         }
 
         /* Modal for image preview */
@@ -110,29 +120,11 @@
             color: #000;
             border-radius: 5px;
         }
-
-        /* Responsiveness */
-        @media (max-width: 600px) {
-            .gallery img {
-                max-width: 100px;
-            }
-        }
     </style>
 </head>
 <body>
     <!-- Dark Mode Toggle -->
     <button class="dark-mode-toggle" id="darkModeToggle">Toggle Dark Mode</button>
-
-    <!-- Terminal-style TV -->
-    <div class="monitor">
-        <div class="screen">
-            <div class="crt">
-                <div class="terminal">
-                    <h1 title="> The Wall of Kiarg">> The Wall of Kiarg</h1>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Header for the Imageboard -->
     <div class="wall-header">The Wall of Kiarg</div>
@@ -162,14 +154,6 @@
         </audio>
     </div>
 
-    <script>
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        darkModeToggle.addEventListener('click', function() {
-            document.body.classList.toggle('dark-mode');
-        });
-
-        // Add any other script logic for the gallery, comments, etc.
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
-
