@@ -30,7 +30,6 @@ uploadForm.addEventListener('submit', (e) => {
             const imgElement = document.createElement('img');
             imgElement.src = e.target.result;
             imgElement.alt = caption;
-            imgElement.classList.add('gallery-item-img');
             imgElement.addEventListener('click', () => openModal(e.target.result));
 
             const galleryItem = document.createElement('div');
@@ -44,18 +43,4 @@ uploadForm.addEventListener('submit', (e) => {
             galleryItem.appendChild(captionText);
             gallery.appendChild(galleryItem);
         };
-        reader.readAsDataURL(file);
-
-        uploadForm.reset();
-    }
-});
-
-// Modal functionality
-function openModal(src) {
-    modalImage.src = src;
-    modal.classList.add('show');
-}
-
-modal.addEventListener('click', () => {
-    modal.classList.remove('show');
-});
+        reader.readAsDataURL(fil
