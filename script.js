@@ -25,12 +25,20 @@ uploadForm.addEventListener('submit', (e) => {
     const caption = captionInput.value;
 
     if (file) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
+        const formData = new FormData();
+        formData.append('image', file);
+        formData.append('caption', caption);
+
+        fetch('http://localhost:3000/upload-image', {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => response.json())
+        .then(data => {
             const imgElement = document.createElement('img');
-            imgElement.src = e.target.result;
+            imgElement.src = data.imageUrl;
             imgElement.alt = caption;
-            imgElement.addEventListener('click', () => openModal(e.target.result));
+            imgElement.addEventListener('click', () => openModal(data.imageUrl));
 
             const galleryItem = document.createElement('div');
             galleryItem.classList.add('gallery-item');
@@ -42,8 +50,8 @@ uploadForm.addEventListener('submit', (e) => {
             galleryItem.appendChild(imgElement);
             galleryItem.appendChild(captionText);
             gallery.appendChild(galleryItem);
-        };
-        reader.readAsDataURL(file);
+        })
+        .catch(error => console.error('Error uploading image:', error));
     }
 });
 
