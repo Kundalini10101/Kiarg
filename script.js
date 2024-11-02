@@ -23,7 +23,7 @@ uploadForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const file = imageInput.files[0];
     const caption = captionInput.value;
-    
+
     if (file) {
         const reader = new FileReader();
         reader.onload = (e) => {
@@ -43,4 +43,13 @@ uploadForm.addEventListener('submit', (e) => {
             galleryItem.appendChild(captionText);
             gallery.appendChild(galleryItem);
         };
-        reader.readAsDataURL(fil
+        reader.readAsDataURL(file);
+    }
+});
+
+// On/Off Button Animation
+const monitor = document.querySelector('.monitor');
+const powerButton = monitor.querySelector('button');
+powerButton.addEventListener('click', () => {
+    monitor.classList.toggle('powered-off');
+});
