@@ -8,8 +8,13 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Enable CORS to allow cross-origin requests
-app.use(cors());
+// Enable CORS with options (this allows only the specified origin)
+// For testing, you can set 'origin' to '*' but it's recommended to specify your client URL in production
+const corsOptions = {
+    origin: '*', // Change '*' to your client domain, e.g., 'http://your-client-domain.com'
+    optionsSuccessStatus: 200 // Some legacy browsers choke on 204
+};
+app.use(cors(corsOptions));
 
 // Configure storage for uploaded files with Multer
 const storage = multer.diskStorage({
