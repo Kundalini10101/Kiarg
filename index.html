@@ -50,6 +50,13 @@
     <!-- Dark Mode Toggle -->
     <button class="dark-mode-toggle" id="darkModeToggle">Toggle Dark Mode</button>
 
+    <!-- Theme Selection -->
+    <div class="theme-selector">
+        <button onclick="setTheme('green')">Green</button>
+        <button onclick="setTheme('blue')">Blue</button>
+        <button onclick="setTheme('purple')">Purple</button>
+    </div>
+
     <!-- Terminal-style Monitor -->
     <div class="monitor">
         <div class="screen">
@@ -65,9 +72,14 @@
     </div>
 
     <!-- Header for the Imageboard -->
-    <div class="wall-header">Goatse Singularity</div>
+    <div class="wall-header">The Wall of Kiarg</div>
 
-    <!-- Imageboard Section -->
+    <!-- Imageboard Section with User Entry -->
+    <form class="user-form" id="userForm">
+        <input type="text" id="userName" placeholder="Enter your name" required>
+        <button type="submit">Set Name</button>
+    </form>
+
     <div class="imageboard">
         <h2>Upload an Image</h2>
         <form class="upload-form" id="uploadForm">
