@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terminal of Truths</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./css.css">
     <style>
-        /* General styles */
+        /* Additional inline styling for integrated elements */
         body {
             margin: 0;
             padding: 0;
@@ -19,7 +20,6 @@
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* Dark mode */
         .dark-mode {
             background-color: #fff;
             color: #000;
@@ -37,88 +37,12 @@
             font-size: 16px;
         }
 
-        /* Wall Header */
         .wall-header {
             margin-top: 20px;
             font-size: 36px;
             text-align: center;
             color: #00ff00;
             text-shadow: 0 0 10px #00ff00;
-        }
-
-        /* Imageboard */
-        .imageboard {
-            width: 80%;
-            max-width: 1200px;
-            margin: 20px auto;
-            background-color: #222;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-            color: #fff;
-        }
-
-        .upload-form {
-            margin-bottom: 20px;
-        }
-
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .gallery-item {
-            position: relative;
-            margin: 10px;
-        }
-
-        .gallery-item img {
-            max-width: 200px;
-            border: 2px solid #00ff00;
-            box-shadow: 0 0 10px #00ff00;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item .caption {
-            text-align: center;
-            color: #00ff00;
-            margin-top: 5px;
-        }
-
-        /* Modal for image preview */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal img {
-            max-width: 90%;
-            max-height: 90%;
-        }
-
-        .modal.show {
-            display: flex;
-        }
-
-        /* Music Player */
-        .music-player {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            background-color: #00ff00;
-            padding: 10px;
-            color: #000;
-            border-radius: 5px;
         }
     </style>
 </head>
@@ -128,22 +52,22 @@
 
     <!-- Terminal-style Monitor -->
     <div class="monitor">
-      <div class="screen">
-        <div class="crt">
-          <div class="terminal">
-            <h1 title="> Hello, World!">> Hello, World!</h1>
-          </div>
-          <div class="vline"></div>
+        <div class="screen">
+            <div class="crt">
+                <div class="terminal">
+                    <h1 title="> Hello, World!">> Hello, World!</h1>
+                </div>
+                <div class="vline"></div>
+            </div>
+            <div class="scan-line"></div>
         </div>
-        <div class="scan-line"></div>
-      </div>
-      <button>On/Off</button>
+        <button>On/Off</button>
     </div>
 
     <!-- Header for the Imageboard -->
     <div class="wall-header">The Wall of Kiarg</div>
 
-    <!-- Imageboard -->
+    <!-- Imageboard Section -->
     <div class="imageboard">
         <h2>Upload an Image</h2>
         <form class="upload-form" id="uploadForm">
@@ -155,7 +79,7 @@
         <div class="gallery" id="gallery"></div>
     </div>
 
-    <!-- Modal for image preview -->
+    <!-- Modal for Image Preview -->
     <div class="modal" id="modal">
         <img src="" alt="Image Preview" id="modalImage">
     </div>
@@ -163,7 +87,7 @@
     <!-- Music Player -->
     <div class="music-player">
         <audio controls>
-            <source src="/Je Te Laisserai Des Mots (Extended).mp3" type="audio/mpeg">
+            <source src="Je Te Laisserai Des Mots (Extended).mp3" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
     </div>
