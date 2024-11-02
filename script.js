@@ -1,24 +1,3 @@
-// Dark mode toggle
-const darkModeToggle = document.getElementById('darkModeToggle');
-darkModeToggle.addEventListener('click', function() {
-    document.body.classList.toggle('dark-mode');
-    localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-});
-
-// Load dark mode state
-document.addEventListener('DOMContentLoaded', () => {
-    const darkMode = localStorage.getItem('darkMode') === 'true';
-    if (darkMode) document.body.classList.add('dark-mode');
-});
-
-// Image upload and gallery display (Client-side display of selected image)
-const uploadForm = document.getElementById('uploadForm');
-const imageInput = document.getElementById('imageInput');
-const captionInput = document.getElementById('captionInput');
-const gallery = document.getElementById('gallery');
-const modal = document.getElementById('modal');
-const modalImage = document.getElementById('modalImage');
-
 uploadForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const file = imageInput.files[0];
@@ -32,6 +11,7 @@ uploadForm.addEventListener('submit', (e) => {
         fetch('http://localhost:3000/upload-image', {
             method: 'POST',
             body: formData,
+            mode: 'cors'  // Explicitly set mode to 'cors'
         })
         .then(response => response.json())
         .then(data => {
@@ -52,11 +32,4 @@ uploadForm.addEventListener('submit', (e) => {
         })
         .catch(error => console.error('Error uploading image:', error));
     }
-});
-
-// On/Off Button Animation
-const monitor = document.querySelector('.monitor');
-const powerButton = monitor.querySelector('button');
-powerButton.addEventListener('click', () => {
-    monitor.classList.toggle('powered-off');
 });
