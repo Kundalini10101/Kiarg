@@ -1,26 +1,175 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>CodePen - css crt-terminal</title>
-  <link rel="stylesheet" href="./style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal of Truths</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        /* General styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'VT323', Courier, monospace;
+            background-color: #000;
+            color: #00ff00;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
 
+        /* Dark mode toggle */
+        .dark-mode {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .dark-mode-toggle {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: #00ff00;
+            border: none;
+            color: #000;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* Wall Header */
+        .wall-header {
+            margin-top: 20px;
+            font-size: 36px;
+            text-align: center;
+            color: #00ff00;
+            text-shadow: 0 0 10px #00ff00;
+        }
+
+        /* Imageboard styles */
+        .imageboard {
+            width: 80%;
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            color: #fff;
+        }
+
+        .upload-form {
+            margin-bottom: 20px;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .gallery img {
+            max-width: 200px;
+            margin: 10px;
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 10px #00ff00;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        /* Modal for image preview */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        /* Music Player */
+        .music-player {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background-color: #00ff00;
+            padding: 10px;
+            color: #000;
+            border-radius: 5px;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 600px) {
+            .gallery img {
+                max-width: 100px;
+            }
+        }
+    </style>
 </head>
 <body>
-<!-- partial:index.partial.html -->
-<div class="monitor">
-  <div class="screen">
-    <div class="crt">
-      <div class="terminal">
-        <h1 title="> Hello, World!">> Hello, World!</h1>
-      </div>
-      <div class="vline"></div>
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" id="darkModeToggle">Toggle Dark Mode</button>
+
+    <!-- Terminal-style TV -->
+    <div class="monitor">
+        <div class="screen">
+            <div class="crt">
+                <div class="terminal">
+                    <h1 title="> The Wall of Kiarg">> The Wall of Kiarg</h1>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="scan-line"></div>
-  </div>
-  <button>On/Off</button>
-</div>
-<!-- partial -->
-  
+
+    <!-- Header for the Imageboard -->
+    <div class="wall-header">The Wall of Kiarg</div>
+
+    <!-- Imageboard -->
+    <div class="imageboard">
+        <h2>Upload an Image</h2>
+        <form class="upload-form" id="uploadForm">
+            <input type="file" id="imageInput" accept="image/*" required>
+            <input type="text" id="captionInput" placeholder="Enter image caption">
+            <input type="submit" value="Upload Image">
+        </form>
+
+        <div class="gallery" id="gallery"></div>
+    </div>
+
+    <!-- Modal for image preview -->
+    <div class="modal" id="modal">
+        <img src="" alt="Image Preview" id="modalImage">
+    </div>
+
+    <!-- Music Player -->
+    <div class="music-player">
+        <audio controls>
+            <source src="your-music-file.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        darkModeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+        });
+
+        // Add any other script logic for the gallery, comments, etc.
+    </script>
 </body>
 </html>
+
