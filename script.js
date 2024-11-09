@@ -25,18 +25,10 @@ uploadForm.addEventListener('submit', (e) => {
     const caption = captionInput.value;
 
     if (file) {
-        const formData = new FormData();
-        formData.append('image', file);
-        formData.append('caption', caption);
-
-        fetch('http://localhost:3000/upload-image', {
-            method: 'POST',
-            body: formData,
-        })
-        .then(response => response.json())
-        .then(data => {
+        const reader = new FileReader();
+        reader.onload = function (e) {
             const imgElement = document.createElement('img');
-            imgElement.src = data.imageUrl;
+            imgElement.src = e.target.result;
             imgElement.alt = caption;
 
             const galleryItem = document.createElement('div');
@@ -49,8 +41,12 @@ uploadForm.addEventListener('submit', (e) => {
             galleryItem.appendChild(imgElement);
             galleryItem.appendChild(captionText);
             gallery.appendChild(galleryItem);
-        })
-        .catch(error => console.error('Error uploading image:', error));
+
+            // Clear inputs after upload
+            imageInput.value = "";
+            captionInput.value = "";
+        };
+        reader.readAsDataURL(file);
     }
 });
 
@@ -60,3 +56,4 @@ const powerButton = monitor.querySelector('button');
 powerButton.addEventListener('click', () => {
     monitor.classList.toggle('powered-off');
 });
+
