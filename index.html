@@ -54,6 +54,34 @@
             object-fit: cover;
             z-index: -1;
         }
+
+        /* Terminal styling */
+        .terminal-container {
+            width: 80%;
+            max-width: 700px;
+            margin-top: 20px;
+            background-color: #222;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .terminal-input {
+            width: 100%;
+            background: none;
+            border: none;
+            outline: none;
+            color: #00ff00;
+            font-size: 1.2rem;
+            font-family: inherit;
+        }
+
+        .terminal-output {
+            white-space: pre-wrap;
+            color: #00ff00;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
     </style>
 </head>
 <body>
@@ -81,6 +109,11 @@
     <div class="wall-header">Goatse Singularity</div>
     <div class="wall-header">H5ctunWZubsvHRh8uqmPjwHRBuMEwfuZU2kD6v1mpump</div>
 
+    <!-- Terminal Feature -->
+    <div class="terminal-container">
+        <div id="terminal-output" class="terminal-output"></div>
+        <input type="text" id="terminal-input" class="terminal-input" placeholder="Enter command...">
+    </div>
 
     <script src="script.js"></script>
 </body>
