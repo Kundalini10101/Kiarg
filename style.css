@@ -109,19 +109,6 @@ body {
     }
 }
 
-/* Additional styling for integrated elements */
-.dark-mode-toggle {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  background-color: #00ff00;
-  border: none;
-  color: #000;
-  padding: 10px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
 .wall-header {
   margin-top: 20px;
   font-size: 36px;
