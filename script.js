@@ -16,6 +16,8 @@ const uploadForm = document.getElementById('uploadForm');
 const imageInput = document.getElementById('imageInput');
 const captionInput = document.getElementById('captionInput');
 const gallery = document.getElementById('gallery');
+const modal = document.getElementById('modal');
+const modalImage = document.getElementById('modalImage');
 
 uploadForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -59,36 +61,25 @@ powerButton.addEventListener('click', () => {
 const terminalInput = document.getElementById("terminal-input");
 const terminalOutput = document.getElementById("terminal-output");
 
-const commands = {
-    help: "Available commands: help, time, about, greet, cat, galaxy, clear",
-    time: () => `Current time is: ${new Date().toLocaleTimeString()}`,
-    about: "This is the Terminal of Truths.",
-    greet: "Hello, user. Welcome to the adventure!",
-    cat: "You are a true friend of the cats!",
-    galaxy: "Exploring the galaxy... buckle up!",
-    clear: function() {
-        terminalOutput.innerHTML = "";
-    }
-};
-
-// Adding 30 extra commands for fun
-for (let i = 1; i <= 30; i++) {
-    commands[`command${i}`] = `Response for command${i}`;
-}
-
 function executeCommand(command) {
-    let output = commands[command];
-    
-    if (typeof output === 'function') {
-        output = output();
-    } else if (!output) {
-        output = `Unknown command: ${command}`;
+    let output;
+    const date = new Date();
+
+    switch (command) {
+        case "help":
+            output = "Available commands: help, time, about";
+            break;
+        case "time":
+            output = `Current time is: ${date.toLocaleTimeString()}`;
+            break;
+        case "about":
+            output = "This is the Terminal of Truths.";
+            break;
+        default:
+            output = `Unknown command: ${command}`;
     }
 
-    const commandOutput = document.createElement("div");
-    commandOutput.innerHTML = `> ${command}<br>${output}<br><br>`;
-    terminalOutput.appendChild(commandOutput);
-
+    terminalOutput.innerText += `> ${command}\n${output}\n\n`;
     terminalOutput.scrollTop = terminalOutput.scrollHeight;
 }
 
