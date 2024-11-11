@@ -1,19 +1,13 @@
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terminal of Truths</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./css.css">
+    <link rel="stylesheet" href="style.css">
     <style>
-        /* Global Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* Body styling */
+        /* Additional inline styling for integrated elements */
         body {
             margin: 0;
             padding: 0;
@@ -23,13 +17,12 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center; /* Center vertically */
-            min-height: 100vh; /* Ensure full viewport height */
             transition: background-color 0.3s ease, color 0.3s ease;
-            text-align: center; /* Center text content */
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
         }
 
-        /* Dark mode toggle button */
         .dark-mode-toggle {
             position: fixed;
             top: 10px;
@@ -40,30 +33,71 @@
             padding: 10px;
             cursor: pointer;
             font-size: 16px;
+        }
+
+        /* Monitor container */
+        .monitor {
+            position: relative;
+            margin: 3vmin auto;
+            padding: 5.5vmin;
+            width: min-content;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #3f3933;
+            border-radius: 0.5rem;
             z-index: 10;
         }
 
-        /* Wall header styling */
+        /* Monitor screen */
+        .monitor .screen {
+            position: relative;
+            background-color: #333;
+            border: 30px solid transparent;
+            border-image-source: url(https://i.ibb.co/8jt98LP/crt-frame.png);
+            border-image-slice: 30 fill;
+            overflow: hidden;
+            width: 80vw;
+            height: calc(80vw * 0.6);
+            max-width: 1000px;
+            max-height: 600px;
+            margin: 0 auto;
+        }
+
+        /* Ensure content inside the monitor screen stays centered and doesn't overflow */
+        .monitor .crt {
+            background: #05321e;
+            background-image: radial-gradient(ellipse, #05321e 0%, #050505 90%);
+            animation: txt-shadow 1.6s infinite;
+            width: 80ch;
+            height: calc(80ch * 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Button below the screen */
+        .monitor button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #00ff00;
+            border: none;
+            color: #000;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
         .wall-header {
+            margin-top: 20px;
             font-size: 36px;
             text-align: center;
             color: #00ff00;
             text-shadow: 0 0 10px #00ff00;
-            margin-top: 20px;
         }
 
-        /* Background video styling */
-        #background-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1; /* Ensure it stays in the background */
-        }
-
-        /* Terminal container styling */
+        /* Terminal styling */
         .terminal-container {
             width: 80%;
             max-width: 700px;
@@ -77,7 +111,6 @@
             gap: 10px;
         }
 
-        /* Terminal output box */
         .terminal-output {
             white-space: pre-wrap;
             color: #00ff00;
@@ -87,7 +120,6 @@
             padding-bottom: 10px;
         }
 
-        /* Terminal input styling */
         .terminal-input {
             width: 100%;
             background: none;
@@ -99,85 +131,23 @@
             padding: 5px;
         }
 
-        /* Monitor styling */
-        .monitor {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 20px;
+        #background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
         }
 
-        .monitor .screen {
-            position: relative;
-            background-color: #333;
-            border: 30px solid transparent;
-            border-image-source: url(https://i.ibb.co/8jt98LP/crt-frame.png);
-            border-image-slice: 30 fill;
-            overflow: hidden;
-            width: 80vw; /* Make the monitor width responsive */
-            height: calc(80vw * 0.6); /* Maintain aspect ratio */
-            max-width: 1000px;
-            max-height: 600px;
-            margin: 0 auto;
-        }
-
-        .monitor button {
-            margin-top: 10px;
-            padding: 10px;
-            background-color: #00ff00;
-            border: none;
-            color: #000;
-            font-size: 18px;
-            cursor: pointer;
-        }
-
-        /* Responsive Design for Small Screens */
-        @media (max-width: 768px) {
-            .wall-header {
-                font-size: 28px; /* Smaller text for smaller screens */
-            }
-
-            .terminal-container {
-                width: 90%; /* Expand terminal container on mobile */
-            }
-
-            .terminal-output {
-                font-size: 1rem; /* Smaller font size for mobile */
-            }
-
-            .monitor .screen {
-                width: 90vw; /* Adjust width of monitor */
-                height: calc(90vw * 0.6); /* Adjust height accordingly */
-            }
-
-            .terminal-input {
-                font-size: 1rem; /* Smaller font size on mobile */
-            }
-        }
-
-        /* Extremely small screens (e.g., phones) */
-        @media (max-width: 480px) {
-            .wall-header {
-                font-size: 24px; /* Even smaller header text */
-            }
-
-            .terminal-container {
-                width: 95%; /* Further adjust terminal container width */
-            }
-
-            .terminal-output {
-                font-size: 0.9rem; /* Smaller font for terminal output */
-            }
-
-            .terminal-input {
-                font-size: 0.9rem; /* Smaller font for terminal input */
-            }
-        }
     </style>
 </head>
+
 <body>
+
     <!-- Video Background -->
-    <video autoplay loop playsinline id="background-video">
+    <video autoplay loop muted playsinline id="background-video">
         <source src="background.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
@@ -207,14 +177,78 @@
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             const video = document.getElementById("background-video");
             video.play().catch(error => {
                 console.error("Video autoplay failed:", error);
             });
         });
+
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        darkModeToggle.addEventListener('click', function () {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+        });
+
+        // Load dark mode state
+        document.addEventListener('DOMContentLoaded', () => {
+            const darkMode = localStorage.getItem('darkMode') === 'true';
+            if (darkMode) document.body.classList.add('dark-mode');
+        });
+
+        // On/Off Button Animation
+        const monitor = document.querySelector('.monitor');
+        const powerButton = monitor.querySelector('button');
+        powerButton.addEventListener('click', () => {
+            monitor.classList.toggle('powered-off');
+        });
+
+        // Terminal commands
+        const terminalInput = document.getElementById("terminal-input");
+        const terminalOutput = document.getElementById("terminal-output");
+
+        function executeCommand(command) {
+            let output;
+            const date = new Date();
+
+            switch (command) {
+                case "help":
+                    output = "Available commands: help, time, about";
+                    break;
+                case "time":
+                    output = `Current time is: ${date.toLocaleTimeString()}`;
+                    break;
+                case "about":
+                    output = "This is the Terminal of Truths.";
+                    break;
+                default:
+                    output = `Unknown command: ${command}`;
+            }
+
+            terminalOutput.innerText += `> ${command}\n${output}\n\n`;
+            terminalOutput.scrollTop = terminalOutput.scrollHeight;
+            terminalInput.focus(); // Keep the input field focused after executing the command
+        }
+
+        // Handle keydown event (use `keydown` instead of `keypress`)
+        terminalInput.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                const command = terminalInput.value.trim();
+                if (command) {
+                    executeCommand(command);
+                    terminalInput.value = "";
+                }
+            }
+        });
+
+        // Prevent text selection on terminal to make input feel smoother
+        terminalInput.addEventListener("mousedown", function (event) {
+            event.preventDefault();
+        });
+
     </script>
 
-    <script src="script.js"></script>
 </body>
+
 </html>
