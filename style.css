@@ -1,19 +1,9 @@
 @charset "utf-8";
 @import url("https://fonts.googleapis.com/css?family=VT323&display=swap");
 
-/* Basic styling and reset */
 html, body {
   height: 100%;
   width: 100%;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: black;
-  font-family: 'VT323', monospace;
-  color: #00ff00;
 }
 
 body {
@@ -25,39 +15,6 @@ body {
 .dark-mode {
   background-color: #fff;
   color: #000;
-}
-
-/* Dark mode toggle button */
-.dark-mode-toggle {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  background-color: #00ff00;
-  border: none;
-  color: #000;
-  padding: 10px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-/* Video background styling */
-#background-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-}
-
-/* Wall header styling */
-.wall-header {
-  margin-top: 20px;
-  font-size: 36px;
-  text-align: center;
-  color: #00ff00;
-  text-shadow: 0 0 10px #00ff00;
 }
 
 /* Monitor and On/Off Button */
@@ -106,50 +63,6 @@ body {
   animation: typing 11s steps(17, end) infinite, blink-cursor .8s step-end infinite;
 }
 
-/* Terminal styling */
-.terminal-container {
-  width: 80%;
-  max-width: 700px;
-  margin-top: 20px;
-  background-color: #001900;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px #00ff00;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: center;
-}
-
-.terminal-output {
-  white-space: pre-wrap;
-  color: #00ff00;
-  font-size: 1.2rem;
-  overflow-y: auto;
-  max-height: 300px;
-  width: 100%;
-  padding-bottom: 10px;
-  text-align: left;
-}
-
-.terminal-input {
-  width: 100%;
-  background: none;
-  border: none;
-  outline: none;
-  color: #00ff00;
-  font-size: 1.2rem;
-  font-family: inherit;
-  padding: 5px;
-  text-align: center;
-}
-
-/* Additional space under the terminal */
-.terminal-space {
-  height: 40px;
-}
-
-/* Imageboard styling */
 .imageboard {
   width: 80%;
   max-width: 1200px;
@@ -162,51 +75,108 @@ body {
 }
 
 .gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
 }
 
 .image-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 150px;
-  padding: 10px;
-  background: #000;
-  border: 1px solid #00ff00;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 150px;
+    padding: 10px;
+    background: #000;
+    border: 1px solid #00ff00;
 }
 
 .image-wrapper img {
-  max-width: 100%;
-  height: auto;
+    max-width: 100%;
+    height: auto;
 }
 
 .caption {
-  color: #00ff00;
-  font-size: 14px;
-  text-align: center;
-  margin-top: 5px;
+    color: #00ff00;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+/* Added styling for the terminal container */
+.terminal-container {
+    width: 80%;
+    max-width: 700px;
+    margin: 20px auto;
+    background-color: #001900; /* Deep green for Matrix theme */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #00ff00;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center; /* Center content within the terminal container */
+}
+
+/* Added styling for terminal output */
+.terminal-output {
+    white-space: pre-wrap;
+    color: #00ff00;
+    font-size: 1.2rem;
+    overflow-y: auto;
+    max-height: 300px;
+    width: 100%;
+    padding-bottom: 10px;
+    text-align: left; /* Align text to the left for terminal output */
+}
+
+/* Added styling for terminal input */
+.terminal-input {
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    color: #00ff00;
+    font-size: 1.2rem;
+    font-family: inherit;
+    padding: 5px;
+    text-align: center; /* Center the input text */
 }
 
 /* Responsive adjustments for mobile */
 @media (max-width: 600px) {
-  .wall-header {
-    font-size: 24px;
-  }
+    .wall-header {
+        font-size: 24px;
+    }
 
-  .terminal-container {
-    width: 90%;
-    padding: 15px;
-  }
+    .terminal-container {
+        width: 90%;
+        padding: 15px;
+    }
 
-  .terminal-output, .terminal-input {
-    font-size: 1rem;
-  }
+    .terminal-output, .terminal-input {
+        font-size: 1rem;
+    }
 
-  .gallery img {
-    max-width: 100px;
-  }
+    .gallery img {
+        max-width: 100px;
+    }
 }
 
+.wall-header {
+  margin-top: 20px;
+  font-size: 36px;
+  text-align: center;
+  color: #00ff00;
+  text-shadow: 0 0 10px #00ff00;
+}
+
+#background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
