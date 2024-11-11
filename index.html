@@ -86,10 +86,10 @@
 </head>
 <body>
     <!-- Video Background -->
-<video autoplay loop playsinline id="background-video">
-    <source src="background.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
+    <video autoplay loop muted playsinline id="background-video">
+        <source src="background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 
     <!-- Terminal-style Monitor -->
     <div class="monitor">
@@ -114,6 +114,15 @@
         <div id="terminal-output" class="terminal-output"></div>
         <input type="text" id="terminal-input" class="terminal-input" placeholder="Enter command...">
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const video = document.getElementById("background-video");
+            video.play().catch(error => {
+                console.error("Video autoplay failed:", error);
+            });
+        });
+    </script>
 
     <script src="script.js"></script>
 </body>
