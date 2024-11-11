@@ -19,11 +19,6 @@
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        .dark-mode {
-            background-color: #fff;
-            color: #000;
-        }
-
         .dark-mode-toggle {
             position: fixed;
             top: 10px;
@@ -58,11 +53,23 @@
         .terminal-container {
             width: 80%;
             max-width: 700px;
-            margin-top: 20px;
-            background-color: #222;
-            padding: 15px;
+            margin: 20px auto;
+            background-color: #001900;
+            padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 10px #00ff00;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .terminal-output {
+            white-space: pre-wrap;
+            color: #00ff00;
+            font-size: 1.2rem;
+            overflow-y: auto;
+            max-height: 300px;
+            padding-bottom: 10px;
         }
 
         .terminal-input {
@@ -73,13 +80,7 @@
             color: #00ff00;
             font-size: 1.2rem;
             font-family: inherit;
-        }
-
-        .terminal-output {
-            white-space: pre-wrap;
-            color: #00ff00;
-            margin-bottom: 10px;
-            font-size: 1.2rem;
+            padding: 5px;
         }
     </style>
 </head>
