@@ -103,7 +103,61 @@ body {
     margin-top: 5px;
 }
 
+/* Added styling for the terminal container */
+.terminal-container {
+    width: 80%;
+    max-width: 700px;
+    margin: 20px auto;
+    background-color: #001900; /* Deep green for Matrix theme */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #00ff00;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center; /* Center content within the terminal container */
+}
+
+/* Added styling for terminal output */
+.terminal-output {
+    white-space: pre-wrap;
+    color: #00ff00;
+    font-size: 1.2rem;
+    overflow-y: auto;
+    max-height: 300px;
+    width: 100%;
+    padding-bottom: 10px;
+    text-align: left; /* Align text to the left for terminal output */
+}
+
+/* Added styling for terminal input */
+.terminal-input {
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    color: #00ff00;
+    font-size: 1.2rem;
+    font-family: inherit;
+    padding: 5px;
+    text-align: center; /* Center the input text */
+}
+
+/* Responsive adjustments for mobile */
 @media (max-width: 600px) {
+    .wall-header {
+        font-size: 24px;
+    }
+
+    .terminal-container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .terminal-output, .terminal-input {
+        font-size: 1rem;
+    }
+
     .gallery img {
         max-width: 100px;
     }
